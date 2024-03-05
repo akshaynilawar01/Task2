@@ -2,16 +2,31 @@ package com.example.demo.model;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+@Entity
 public class CardDetails {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="CARD_ID")
+	private int cardid;
 	
+	@Column(name="CARD_TYPE")
 	private String cardtype;
 	
+	@Column(name="BANK_NAME")
 	private String bankname;
 	
+	@Column(name="CARD_NUMBER")
 	private long cardnumber;
 	
+	@Column(name="NAME")
 	private String nameoncard;
 	
+	@Column(name="EXPIRY_DATE")
 	private Date expirydate;
 
 	public CardDetails() {

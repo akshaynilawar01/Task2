@@ -1,10 +1,13 @@
 package com.example.demo.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class UserDetails {
@@ -25,12 +28,70 @@ public class UserDetails {
     @Column(name="LAST_NAME")
 	private String lastname;
 	
-    @Column(name="STATUS")
+    public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+	public ContactDetails getContactDetails() {
+		return contactDetails;
+	}
+
+	public void setContactDetails(ContactDetails contactDetails) {
+		this.contactDetails = contactDetails;
+	}
+
+	@Column(name="STATUS")
 	private String status;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="contactid")
+    private ContactDetails contactDetails;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="orgid")
+    private OrganizationalDetails organizationalDetails;
+    
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="personalid")
+    private PersonalInformation personalInformation;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="cardid")
+    private CardDetails cardDetails;
+
 
 	public UserDetails() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public CardDetails getCardDetails() {
+		return cardDetails;
+	}
+
+	public void setCardDetails(CardDetails cardDetails) {
+		this.cardDetails = cardDetails;
+	}
+
+	public PersonalInformation getPersonalInformation() {
+		return personalInformation;
+	}
+
+	public void setPersonalInformation(PersonalInformation personalInformation) {
+		this.personalInformation = personalInformation;
+	}
+
+	public OrganizationalDetails getOrganizationalDetails() {
+		return organizationalDetails;
+	}
+
+	public void setOrganizationalDetails(OrganizationalDetails organizationalDetails) {
+		this.organizationalDetails = organizationalDetails;
 	}
 
 	public UserDetails(String salutation, String firstname, String middlename, String lastname, String status) {
