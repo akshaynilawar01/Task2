@@ -35,13 +35,13 @@ public class CardDetailsController {
 		return cardServices.addCardDetails(cardDetails);
 	}
 	
-	@PutMapping("/editcarddetails")
+	@PutMapping("/editcarddetails/{id}")
 	public CardDetails updateCardDetail(@RequestBody CardDetails cardDetails, @PathVariable int id)
 	{
 		return cardServices.addCardDetails(cardDetails);
 	}
 	
-	@DeleteMapping("/deletecarddetails")
+	@DeleteMapping("/deletecarddetails/{id}")
 	public void deleteCardDeatils(@PathVariable int id)
 	{
 		cardServices.deleteCardDetails(id);

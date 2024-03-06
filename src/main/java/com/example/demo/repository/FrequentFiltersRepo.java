@@ -1,5 +1,9 @@
 package com.example.demo.repository;
 
-public interface FrequentFiltersRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.model.FrequentFilters;
+
+public interface FrequentFiltersRepo extends JpaRepository<FrequentFilters, Integer> {
 
 }

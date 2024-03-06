@@ -29,10 +29,11 @@ public class UserDetailsContoller {
 		return userServices.getAllUsers();
 	}
 	
-	@PostMapping("/adduser/{id}/{orgid}/{personalid}/{cardid}")
-	public UserDetails addUser(@RequestBody UserDetails userDetails, @PathVariable int id, @PathVariable int orgid, @PathVariable int personalid, @PathVariable int cardid)
+	@PostMapping("/adduser/{id}/{orgid}/{personalid}/{cardid}/{docid}/{flid}")
+	public UserDetails addUser(@RequestBody UserDetails userDetails, @PathVariable int id, @PathVariable int orgid, @PathVariable int personalid, @PathVariable int cardid,
+			@PathVariable int docid, @PathVariable int flid)
 	{
-		return userServices.addUser(userDetails, id, orgid, personalid, cardid);
+		return userServices.addUser(userDetails, id, orgid, personalid, cardid, docid, flid);
 	}
 	
 	@PutMapping("/edituser")

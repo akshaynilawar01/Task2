@@ -64,6 +64,16 @@ public class UserDetails {
     @JoinColumn(name="cardid")
     private CardDetails cardDetails;
 
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="docid")
+    private DocumentInfo documentInfo;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="flid")
+    private FLmembers flmembers;
+
+
 
 	public UserDetails() {
 		super();
@@ -72,6 +82,22 @@ public class UserDetails {
 
 	public CardDetails getCardDetails() {
 		return cardDetails;
+	}
+
+	public DocumentInfo getDocumentInfo() {
+		return documentInfo;
+	}
+
+	public void setDocumentInfo(DocumentInfo documentInfo) {
+		this.documentInfo = documentInfo;
+	}
+
+	public FLmembers getFlmembers() {
+		return flmembers;
+	}
+
+	public void setFlmembers(FLmembers flmembers) {
+		this.flmembers = flmembers;
 	}
 
 	public void setCardDetails(CardDetails cardDetails) {

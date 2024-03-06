@@ -8,11 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.CardDetails;
 import com.example.demo.model.ContactDetails;
+import com.example.demo.model.DocumentInfo;
+import com.example.demo.model.FLmembers;
 import com.example.demo.model.OrganizationalDetails;
 import com.example.demo.model.PersonalInformation;
 import com.example.demo.model.UserDetails;
 import com.example.demo.repository.CardRepo;
 import com.example.demo.repository.ContactRepo;
+import com.example.demo.repository.DocumentInfoRepo;
+import com.example.demo.repository.FLmemberRepo;
 import com.example.demo.repository.OrganizationalRepo;
 import com.example.demo.repository.PersonalInformationRepo;
 import com.example.demo.repository.UserRepo;
@@ -33,6 +37,13 @@ public class UserServices {
 	@Autowired
 	private PersonalInformationRepo personalInformationRepo;
 	
+	
+	@Autowired
+	private DocumentInfoRepo documentInfoRepo;
+	
+	@Autowired
+	private FLmemberRepo fLmemberRepo;
+	
 	@Autowired
 	private CardRepo cardRepo;
 	
@@ -41,8 +52,12 @@ public class UserServices {
 		return userRepo.findAll();
 	}
 	
-	public UserDetails addUser(UserDetails userDetails, int contactid, int orgid, int personalid, int cardid)
+	public UserDetails addUser(UserDetails userDetails, int contactid, int orgid, int personalid, int cardid, int docid,int flid)
 	{   
+		FLmembers fLmembers = fLmemberRepo.findById(flid).get();
+		userDetails.setFlmembers(fLmembers);
+		DocumentInfo document = documentInfoRepo.findById(docid).get();
+		userDetails.setDocumentInfo(document);
 		CardDetails card = cardRepo.findById(cardid).get();
 		userDetails.setCardDetails(card);
 		PersonalInformation personalInformation = personalInformationRepo.findById(personalid).get();

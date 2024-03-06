@@ -1,5 +1,10 @@
 package com.example.demo.repository;
 
-public interface VisaDetailsRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.example.demo.model.VisaDetails;
+
+public interface VisaDetailsRepo extends JpaRepository<VisaDetails, Integer> {
+
+	
 }

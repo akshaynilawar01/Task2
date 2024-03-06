@@ -35,13 +35,13 @@ public class ContactInformationController {
 		return contactServices.addContact(contactDetails);
 	}
 	
-	@DeleteMapping("/deletecontact")
+	@DeleteMapping("/deletecontact/{id}")
 	public void deleteContact(@PathVariable int id)
 	{
 		contactServices.deleteContact(id);
 	}
 	
-	@PutMapping("/editcontact")
+	@PutMapping("/editcontact/{id}")
 	public ContactDetails updateContact(@RequestBody ContactDetails contactDetails, @PathVariable int id)
 	{
 		return contactServices.updateContact(contactDetails, id);
